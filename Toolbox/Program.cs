@@ -41,6 +41,7 @@ builder.Services.AddCors(options =>
         ;
     });
 });
+builder.Services.AddAWSLambdaHosting(LambdaEventSource.HttpApi);
 
 /// custom services
 builder.Services.AddDbContext<ToolboxContext>(options =>
@@ -50,12 +51,9 @@ builder.Services.AddScoped<IJsonschema, JsonschemaRepo>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
