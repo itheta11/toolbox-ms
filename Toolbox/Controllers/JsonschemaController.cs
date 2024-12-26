@@ -58,7 +58,7 @@ namespace Toolbox.Controllers
                 throw new Exception("Bad request, scheamId is missing");
             }
             var newschema = await _jsonSchema.UpdatejsonSchema(id.Value, payload);
-            return Created(newschema.Id.ToString(), newschema);
+            return Ok(newschema);
         }
     }
 }

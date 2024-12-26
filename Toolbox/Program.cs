@@ -50,6 +50,7 @@ builder.Services.AddDbContext<ToolboxContext>(options =>
     options.UseNpgsql(config.GetConnectionString("Toolbox"))
 );
 builder.Services.AddScoped<IJsonschema, JsonschemaRepo>();
+builder.Services.AddScoped<IArticleRepo, ArticleRepo>();
 
 var app = builder.Build();
 
