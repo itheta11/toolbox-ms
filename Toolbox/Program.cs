@@ -51,6 +51,7 @@ builder.Services.AddDbContext<ToolboxContext>(options =>
 );
 builder.Services.AddScoped<IJsonschema, JsonschemaRepo>();
 builder.Services.AddScoped<IArticleRepo, ArticleRepo>();
+builder.Services.AddScoped<ICheatsheetRepo, CheatsheetRepo>();
 
 var app = builder.Build();
 
