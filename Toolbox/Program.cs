@@ -45,7 +45,7 @@ builder.Services.AddAWSLambdaHosting(LambdaEventSource.HttpApi);
 
 /// custom services
 builder.Services.AddDbContext<ToolboxContext>(options =>
-    options.UseNpgsql(config.GetConnectionString("Toolbox"))
+    options.UseNpgsql(config.GetSection("Toolbox").Get<string>())
 );
 builder.Services.AddScoped<IJsonschema, JsonschemaRepo>();
 
