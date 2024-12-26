@@ -13,7 +13,9 @@ var config = builder.Configuration;
 
 config.SetBasePath(AppDomain.CurrentDomain.BaseDirectory);
 config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-    .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: false, reloadOnChange: true);
+    .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: false, reloadOnChange: true)
+    .AddEnvironmentVariables()
+    ;
 // Add services to the container.
 
 builder.Services.AddApiVersioning(options =>
@@ -45,7 +47,7 @@ builder.Services.AddAWSLambdaHosting(LambdaEventSource.HttpApi);
 
 /// custom services
 builder.Services.AddDbContext<ToolboxContext>(options =>
-    options.UseNpgsql(config.GetSection("Toolbox").Get<string>())
+    options.UseNpgsql(config.GetConnectionString("Toolbox"))
 );
 builder.Services.AddScoped<IJsonschema, JsonschemaRepo>();
 
