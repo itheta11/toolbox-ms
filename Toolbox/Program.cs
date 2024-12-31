@@ -52,10 +52,12 @@ builder.Services.AddDbContext<ToolboxContext>(options =>
 builder.Services.AddScoped<IJsonschema, JsonschemaRepo>();
 builder.Services.AddScoped<IArticleRepo, ArticleRepo>();
 builder.Services.AddScoped<ICheatsheetRepo, CheatsheetRepo>();
+builder.Services.AddScoped<IJsonItem, JsonItemRepo>();
+
 
 var app = builder.Build();
 
-
+app.UseCors();
 app.UseSwagger();
 app.UseSwaggerUI();
 
